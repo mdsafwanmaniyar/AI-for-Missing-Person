@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c8b68e41-ba5d-4a8a-bb89-871325e8fe7d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="1sIgbPBlVWOFAzJsFMNdD2o47AT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/2020 Projects/2024_Pycharm_Projects/MissingChildIdentification"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2020 Projects\2020_Pycharm_Projects\MissingChildIdentification\missingchild" />
+      <recent name="D:\2020 Projects\2020_Pycharm_Projects\MissingChildIdentification\templates" />
+      <recent name="C:\Users\nagas\PycharmProjects\MissingChildIdentification" />
+      <recent name="C:\Users\nagas\PycharmProjects\MissingChildIdentification\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MissingChildIdentification" type="Python.DjangoServer" factoryName="Django server">
+      <module name="MissingChildIdentification" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="MissingChildIdentification.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8b68e41-ba5d-4a8a-bb89-871325e8fe7d" name="Default Changelist" comment="" />
+      <created>1620565588772</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620565588772</updated>
+      <workItem from="1620565591375" duration="6168000" />
+      <workItem from="1620618353209" duration="1148000" />
+      <workItem from="1620627545875" duration="853000" />
+      <workItem from="1620632285902" duration="664000" />
+      <workItem from="1620913803201" duration="104000" />
+      <workItem from="1621010531312" duration="1632000" />
+      <workItem from="1633011587553" duration="115000" />
+      <workItem from="1633064177114" duration="38000" />
+      <workItem from="1634880315702" duration="1782000" />
+      <workItem from="1634882123412" duration="1785000" />
+      <workItem from="1694748456213" duration="1345000" />
+      <workItem from="1694766415245" duration="1714000" />
+      <workItem from="1695807182913" duration="29000" />
+      <workItem from="1698646782068" duration="6000" />
+      <workItem from="1698815315639" duration="864000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
