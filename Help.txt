@@ -1,0 +1,37 @@
+E:
+cd "AI for Misiing person"
+
+
+
+to setup project open anaconda prompt and run the following command
+---------------------------------------------------------------------------------------
+conda create -n major python==3.8.19
+activate major
+
+pip install numpy pandas matplotlib scikit-learn tensorflow textblob seaborn imutils keras h5py flask Django
+y
+conda install jupyter notebook
+pip install opencv-python
+conda install -c conda-forge dlib
+
+
+
+to run the project open anaconda prompt and run the following commands
+---------------------------------------------------------------------------
+cd C:\Users\chegu\OneDrive\Desktop\major\MissingChildIdentification
+conda activate major
+python manage.py runserver
+
+open browser and run the following url (127.0.0.1:800
+
+
+to access application run the following url
+--------------------------------------------------------------------------
+for project 	: 127.0.0.1:8000
+
+
+for database	: 127.0.0.1:8000/admin
+		: username:admin
+		: password:admin
+
+
