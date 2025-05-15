@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepLearnig Model</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}" title="style" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Check if user prefers dark mode from localStorage or default to light mode
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Toggle the theme
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            // Save the user's theme preference to localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-200 via-sky-100 to-stone-300 dark:from-gray-900 dark:via-slate-800 dark:to-black flex items-center justify-center transition-colors">
+
+    <div class="absolute top-4 right-4">
+        <button onclick="toggleTheme()" class="bg-gradient-to-r from-slate-700 to-slate-900 dark:from-zinc-700 dark:to-neutral-900 text-white text-sm px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform">Toggle Theme</button>
+    </div>
+
+    <div id="main" class="backdrop-blur-xl bg-white/40 dark:bg-white/10 border border-white/30 shadow-2xl rounded-3xl p-8 w-[80%] sm:w-[600px] lg:w-[800px] text-gray-800 dark:text-gray-200">
+
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h3 class="text-center text-3xl font-bold text-transparent bg-gradient-to-r from-slate-800 to-indigo-800 dark:from-gray-300 dark:to-slate-200 bg-clip-text">
+                        <a href="#">AI for Missing Person Identification Using Deep Learning</a>
+                    </h3>
+                    <br />
+                </div>
+            </div>
+            <div id="menubar">
+                <ul id="menu" class="text-white">
+                    {% if request.session.role in "user"%}
+                    <li><a href="/addmissingchild" class="hover:text-yellow-500 transition-colors">Add Missing Person</a></li>
+                    {% endif %}
+                    <li><a href="/viewmissingperson" class="hover:text-yellow-500 transition-colors">View Missing Persons</a></li>
+                    {% if request.session.role in "admin"%}
+                    <li><a href="/findMissingPerson" class="hover:text-yellow-500 transition-colors">Track Missing Persons</a></li>
+                    {% endif %}
+                    <li><a href="/viewrecordedpersons" class="hover:text-yellow-500 transition-colors">View Recorded Persons</a></li>
+                    <li><a href="/logout" class="hover:text-yellow-500 transition-colors">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="content_header"></div>
+        <div id="site_content">
+            <div id="content">
+                <h1 class="text-2xl font-bold mb-6">Welcome to <strong>{{ request.session.username }}</strong>{{ form.non_field_errors }}</h1>
+
+                <h1 class="text-xl font-semibold mb-6"><strong>{{ message }}</strong></h1>
+
+                <table id="customers" class="table-auto w-full text-gray-800 dark:text-gray-200">
+                    <thead>
+                        <tr class="text-white bg-gradient-to-r from-indigo-600 to-blue-600">
+                            <th class="px-4 py-2">Name</th>
+                            <th class="px-4 py-2">Date</th>
+                            <th class="px-4 py-2">Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in recordedpersons %}
+                        <tr class="bg-white dark:bg-gray-800 hover:bg-sky-100 dark:hover:bg-sky-900 transition-colors">
+                            <td class="px-4 py-2"><a href="/viewuserprofile?username={{ person.name }}" class="text-blue-600 dark:text-blue-400 hover:text-yellow-500 transition-colors">{{ person.name }}</a></td>
+                            <td class="px-4 py-2">{{ person.recordeddate }}</td>
+                            <td class="px-4 py-2">Web Cam</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

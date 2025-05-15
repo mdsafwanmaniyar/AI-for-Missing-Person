@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepLearnig Model</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}" title="style" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-200 via-sky-100 to-stone-300 dark:from-gray-900 dark:via-slate-800 dark:to-black flex items-center justify-center transition-colors">
+    <!-- Theme toggle button -->
+    <div class="absolute top-4 right-4">
+        <button onclick="toggleTheme()" class="bg-gradient-to-r from-slate-700 to-slate-900 dark:from-zinc-700 dark:to-neutral-900 text-white text-sm px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform">
+            Toggle Theme
+        </button>
+    </div>
+
+    <div id="main" class="backdrop-blur-xl bg-white/40 dark:bg-white/10 border border-white/30 shadow-2xl rounded-3xl p-8 w-[80%] sm:w-[600px] lg:w-[800px] text-gray-800 dark:text-gray-200">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h3 class="text-center text-3xl font-bold text-transparent bg-gradient-to-r from-slate-800 to-indigo-800 dark:from-gray-300 dark:to-slate-200 bg-clip-text">
+                        <a href="#">AI for Missing Person Identification Using Deep Learning</a>
+                    </h3>
+                    <br />
+                </div>
+            </div>
+            <div id="menubar">
+                <ul id="menu">
+                    {% if request.session.role in "user" %}
+                        <li><a href="/addmissingchild">Add Missing Person</a></li>
+                    {% endif %}
+                    <li><a href="/viewmissingperson">View Missing Persons</a></li>
+
+                    {% if request.session.role in "admin" %}
+                        <li><a href="/findMissingPerson">Track Missing Persons</a></li>
+                    {% endif %}
+
+                    <li><a href="/viewrecordedpersons">View Recorded Persons</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content_header"></div>
+        <div id="site_content">
+            <div id="content">
+                <h1 class="text-2xl font-bold mb-6">Welcome to <strong>{{ request.session.username }}</strong></h1>
+                <h1 class="text-lg font-semibold">{{ message }}</h1>
+
+                {% for missingperson in persons %}
+                    <div class="border-4 border-dotted border-indigo-500 rounded-lg p-4 mb-6 bg-white/50 dark:bg-black/40">
+                        <div class="table-responsive">
+                            <div align="center">
+                                <img src="{% static '' %}{{ missingperson.image }}" style="width: 200px; height: 200px;">
+                                <br />
+                                <b><font color="red" size="4">{{ missingperson.name }} --</font></b>
+                                {% if missingperson.userid in request.session.username or request.session.role in "admin" %}
+                                    <a href="/deletemissingperson?personid={{ missingperson.id }}" class="text-red-500 hover:text-red-700">Delete</a>
+                                {% endif %}
+                            </div>
+                            <table class="table-auto w-full text-gray-700 dark:text-gray-300">
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>{{ missingperson.name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender:</td>
+                                    <td>{{ missingperson.gender }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Age:</td>
+                                    <td>{{ missingperson.age }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Skin Color:</td>
+                                    <td>{{ missingperson.skincolor }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Height:</td>
+                                    <td>{{ missingperson.height }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Language:</td>
+                                    <td>{{ missingperson.languages }}</td>
+                                </tr>
+                                <tr>
+                                    <td>is disabled:</td>
+                                    <td>{{ missingperson.isdisabled }}</td>
+                                </tr>
+                                <tr>
+                                    <td>is having madness:</td>
+                                    <td>{{ missingperson.ishavingmadness }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nationality:</td>
+                                    <td>{{ missingperson.nationality }}</td>
+                                </tr>
+                                <tr>
+                                    <td>State:</td>
+                                    <td>{{ missingperson.state }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Education:</td>
+                                    <td>{{ missingperson.education }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Missing Date:</td>
+                                    <td>{{ missingperson.dateofmissing }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Missing Location:</td>
+                                    <td>{{ missingperson.locationofmissing }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Moles Location:</td>
+                                    <td>{{ missingperson.locationofmoles }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepLearnig Model</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}" title="style" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class' // This allows switching themes via a class on the <html> element
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-200 via-sky-100 to-stone-300 dark:from-gray-900 dark:via-slate-800 dark:to-black flex items-center justify-center transition-colors">
+
+    <div class="absolute top-4 right-4">
+        <button onclick="toggleTheme()" class="bg-gradient-to-r from-slate-700 to-slate-900 dark:from-zinc-700 dark:to-neutral-900 text-white text-sm px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform">Toggle Theme</button>
+    </div>
+
+    <div id="main" class="backdrop-blur-xl bg-white/40 dark:bg-white/10 border border-white/30 shadow-2xl rounded-3xl p-8 w-[80%] sm:w-[600px] lg:w-[800px] text-gray-800 dark:text-gray-200">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h3 class="text-center text-3xl font-bold text-transparent bg-gradient-to-r from-slate-800 to-indigo-800 dark:from-gray-300 dark:to-slate-200 bg-clip-text">
+                        <a href="#">AI for Missing Person Identification Using Deep Learning</a>
+                    </h3>
+                    <br />
+                </div>
+            </div>
+
+            <div id="menubar">
+                <ul id="menu">
+                    {% if request.session.role in "user" %}
+                    <li><a href="/addmissingchild">Add Missing Person</a></li>
+                    {% endif %}
+                    <li><a href="/viewmissingperson">View Missing Persons</a></li>
+
+                    {% if request.session.role in "admin" %}
+                    <li><a href="/findMissingPerson">Track Missing Persons</a></li>
+                    {% endif %}
+
+                    <li><a href="/viewrecordedpersons">View Recorded Persons</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="content_header"></div>
+        <div id="site_content">
+            <div id="content">
+                <h1 class="text-2xl font-bold mb-6">Add Missing Person {{ message }}</h1>
+
+                <form action="/addmissingchildaction/" method="post" name="appform" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form_settings">
+                        <p><span>Name*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="name" required="required" /></p>
+                        <p><span>Age*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="number" name="age" required="required" /></p>
+                        <p>
+                            <span>Gender</span>
+                            <select class="w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" name="gender" required="required">
+                                <option value="">--select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </p>
+                        <p><span>Skin Color*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="skincolor" required="required" /></p>
+                        <p><span>Height*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="height" required="required" /></p>
+                        <p><span>Languages Speak*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="languages" required="required" /></p>
+                        <p><span>Photo*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="file" name="image" required="required" /></p>
+                        <p>
+                            <span>Is Disabled</span>
+                            <select class="w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" name="isdisabled" required="required">
+                                <option value="">--select</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </p>
+                        <p>
+                            <span>Is Having Madness</span>
+                            <select class="w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" name="ishavingmadness" required="required">
+                                <option value="">--select</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </p>
+                        <p><span>Nationality*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="nationality" required="required" /></p>
+                        <p><span>State*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="state" required="required" /></p>
+                        <p><span>Education*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="education" required="required" /></p>
+                        <p><span>Date of Missing*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="date" name="dateofmissing" required="required" /></p>
+                        <p><span>Location of Missing*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="locationofmissing" required="required" /></p>
+                        <p><span>Location of Moles*</span><input class="contact w-full px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/30" type="text" name="locationofmoles" required="required" /></p>
+                        <p style="padding-top: 15px">
+                            <span>&nbsp;</span><input class="submit w-full bg-gradient-to-r from-indigo-700 via-blue-800 to-slate-900 text-white font-bold py-2 rounded-xl transition duration-300 transform hover:scale-105" type="submit" name="contact_submitted" value="Add Missing Person" onclick="return validate()" />
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+
+</html>
